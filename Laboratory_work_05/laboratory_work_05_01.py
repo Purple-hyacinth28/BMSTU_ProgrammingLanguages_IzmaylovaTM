@@ -40,13 +40,20 @@ def count_minors(a, n):
                 count_minim += 1
     return count_minim
 
-n = int(input("Введите значение размерности массива"))
+def printer_matrix(a, n):
+    for i in range(n):
+        for j in range(n):
+            print(a[i][j], end= " ")
+        print()
+
+n = int(input("Введите размер матрицы (n * n): "))
 a = [[randint(-10, 10)for i in range(n)]for i in range(n)]
 print("Массив")
-print(a)
+printer_matrix(a, n)
 count_minim = count_minors(a, n)
 print("Количесвто локальных минимумов: ")
 print(count_minim)
 sum = summa_abs(a, n)
 print("Сумма элементов над главной диагональю")
 print(sum)
+#все сделано !!! :)
