@@ -1,0 +1,45 @@
+from random import randint
+def massiv_sosed(a, i, j, n):
+    b = []
+    if n - 1 >= i - 1 >= 0 and  n - 1 >= j - 1 >= 0:
+        b.append(a[i - 1][j - 1])
+    if n - 1 >= i - 1 >= 0 and  n - 1 >= j >= 0:
+        b.append(a[i - 1][j])
+    if n - 1 >= i - 1 >= 0 and  n - 1 >= j + 1 >= 0:
+        b.append(a[i - 1][j + 1])
+    if n - 1 >= i >= 0 and  n - 1 >= j - 1 >= 0:
+        b.append(a[i][j - 1])
+    if n - 1 >= i >= 0 and  n - 1 >= j + 1 >= 0:
+        b.append(a[i][j + 1])
+    if n - 1 >= i + 1 >= 0 and  n - 1 >= j - 1 >= 0:
+        b.append(a[i + 1][j - 1])
+    if n - 1 >= i + 1 >= 0 and  n - 1 >= j >= 0:
+        b.append(a[i + 1][j])
+    if n - 1 >= i + 1 >= 0 and  n - 1 >= j + 1 >= 0:
+        b.append(a[i + 1][j + 1])
+    return b
+
+def suuma_abs(a, n):
+    summa = 0
+    for i in range(n):
+        for j in range(n):
+            if i < j:
+                summa += abs(a[i][j])
+    return summa
+n = int(input("Введит езначение размерности массива"))
+a = [[randint(-10, 10)for i in range(n)]for i in range(n)]
+print(a)
+count_minim = 0
+for i in range(n):
+    for j in range(n):
+        b =  massiv_sosed(a, i, j, n)
+        flag = 1
+        for k in b:
+            if a[i][j] >= k:
+                flag = 0
+                break
+        if flag:
+            count_minim += 1
+print(count_minim)
+sum =suuma_abs(a, n)
+print(sum)
